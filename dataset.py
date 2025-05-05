@@ -128,7 +128,7 @@ def ami_data_finder(words_root, audio_root, rttm_root, uris):
     
     return output
 
-def callhome_data_finder(words_root, audio_root, rttm_root, uris):
+def custom_data_finder_with_uri(words_root, audio_root, rttm_root, uris):
     output = []
     for uri in uris:
         uri = uri.strip()
@@ -161,7 +161,7 @@ def all_data(words_root, audio_root, rttm_root, n_mels, uri_file=None):
     if uri_file is not None:
         with open(uri_file, "r") as f:
             uris = f.readlines()
-    all_paths = custom_data_finder(words_root, audio_root, rttm_root, uris)
+    all_paths = custom_data_finder(words_root, audio_root, rttm_root, uris) # call other data finder function if needed
     result = {"content":[], "mel":[], "speakers":[]}
     
     for (words_path, rttm_path, audio_path, uri) in all_paths:
